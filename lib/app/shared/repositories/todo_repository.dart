@@ -12,6 +12,16 @@ class TodoRepository {
     return result.map((map) => TodoModel.fromJson(map)).toList();
   }
 
+  Future<TodoModel?> getTodoById(String todoId) async {
+    final db = await databaseHelper.database;
+    final result =
+        await db.query('todos', where: 'taskId = ?', whereArgs: [todoId]);
+    if (result.isNotEmpty) {
+      return TodoModel.fromJson(result.first);
+    }
+    return null;
+  }
+
   Future<void> addTodo(TodoModel todo) async {
     final db = await databaseHelper.database;
     await db.insert('todos', todo.toJson());
