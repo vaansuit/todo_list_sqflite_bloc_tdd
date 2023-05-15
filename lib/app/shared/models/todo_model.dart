@@ -19,6 +19,7 @@ class TodoModel {
       userId: json['userId'],
       taskTitle: json['taskTitle'],
       taskDescription: json['taskDescription'],
+      isCompleted: json['isCompleted'],
     );
   }
 
@@ -28,6 +29,7 @@ class TodoModel {
       'userId': userId,
       'taskTitle': taskTitle,
       'taskDescription': taskDescription,
+      'isCompleted': isCompleted,
     };
   }
 }
