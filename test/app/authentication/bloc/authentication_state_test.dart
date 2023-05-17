@@ -19,5 +19,39 @@ void main() {
         expect(state, isA<AuthenticationLoadingState>());
       },
     );
+
+    test(
+      'AuthenticationLoadedState should be initialized correctly',
+      () {
+        const userId = 'user123';
+        final state = AuthenticationLoadedState(userId: userId);
+
+        expect(state, isA<AuthenticationState>());
+        expect(state, isA<AuthenticationLoadedState>());
+        expect(state.userId, equals(userId));
+      },
+    );
+
+    test(
+      'AuthenticationUnauthenticatedState should be initialized correctly',
+      () {
+        final state = AuthenticationUnauthenticatedState();
+
+        expect(state, isA<AuthenticationState>());
+        expect(state, isA<AuthenticationUnauthenticatedState>());
+      },
+    );
+
+    test(
+      'AuthenticationErrorState should be initialized correctly',
+      () {
+        const errorMessage = 'Authentication failed';
+        final state = AuthenticationErrorState(errorMessage);
+
+        expect(state, isA<AuthenticationState>());
+        expect(state, isA<AuthenticationErrorState>());
+        expect(state.errorMessage, equals(errorMessage));
+      },
+    );
   });
 }
