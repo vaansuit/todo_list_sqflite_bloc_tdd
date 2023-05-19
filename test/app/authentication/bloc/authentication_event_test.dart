@@ -20,11 +20,22 @@ void main() {
         'UserLoggedIn event should be initialized correctly',
         () {
           const token = 'abc123';
-          final event = UserLoggedIn(token);
+          const event = UserLoggedIn(token);
 
           expect(event, isA<AuthenticationEvent>());
           expect(event, isA<UserLoggedIn>());
-          expect(event.token, equals('UserLoggedIn {token: $token}'));
+          expect(event.token, equals(token));
+        },
+      );
+
+      test(
+        'UserLoggedOut event should be initialized correctly',
+        () {
+          final event = UserLoggedOut();
+
+          expect(event, isA<AuthenticationEvent>());
+          expect(event, isA<UserLoggedOut>());
+          expect(event.toString(), equals('UserLoggedOut'));
         },
       );
     },
